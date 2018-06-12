@@ -3,7 +3,6 @@ Limitar trafico de youtube
 
 <img src="https://github.com/erickramirez82/Limit-Youtube-Video-Streams-on-Mikrotik/blob/master/mikrotik_vs_youtube.jpg?raw=true" />
 
-
 1. Haga clic en IP> Firewall, seleccione la pestaña: Protocolos Layer7, y haga clic en el botón +, se mostrará como la imagen de abajo. y luego haz clic en Ok. Tendrás la nueva regla de los Protocolos Layer7 con el nombre de transmisión. Puede agregar cualquier otra transmisión de video url dentro de Regexp
 
 <b> Opción 1 <b/>
@@ -19,9 +18,7 @@ add comment="" name=streaming regexp="^.*get.+\\.(c.youtube.com|cdn.dailymotion.
 add comment="" name=streaming regexp="videoplayback|video"
 ```
 
-2. Aún en la ventana del firewall, seleccione la pestaña: Deshacer, aquí creará una nueva regla de mangle. Para más rápido, simplemente haga clic en el menú Nuevo terminal, copie el script mangle, haga clic con el botón derecho en la ventana del terminal y pegue allí.
-
-<br>La secuencia de comandos mangle que debes insertar:
+2. Aún en la ventana del firewall, seleccione la pestaña: Deshacer, aquí creará una nueva regla de mangle. Para más rápido, simplemente haga clic en el menú Nuevo terminal, copie el script mangle, haga clic con el botón derecho en la ventana del terminal y pegue allí. La secuencia de comandos mangle que debes insertar:
 
 <b> Opción 1 <b/>
 
@@ -71,8 +68,6 @@ packet-marks=video_stream_packet parent=none priority=8 \
 queue=default-small/default-small burst-limit=0/0 burst-threshold=0/0 burst-time=0s/0s \
 total-queue=default-small
 ```
-
-
 En este caso, queremos hacer diferencias de ancho de banda en Día y Noche
 
 Day = 06:00am – 18:00pm – 256kbps. Max-Limit;<br>
